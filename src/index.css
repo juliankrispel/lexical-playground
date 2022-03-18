@@ -1,4 +1,13 @@
 body {
 	font-family: sans-serif;
 	padding: 3em;
+  background: #ccc;
+}
+
+[contentEditable] {
+  padding: 1em;
+  height: 100%;
+  background: #fff;
+  outline: none;
+  margin-bottom: 2em;
 }

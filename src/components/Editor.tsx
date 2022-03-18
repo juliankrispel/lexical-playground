@@ -6,6 +6,9 @@ import LexicalComposer from "@lexical/react/LexicalComposer";
 import LexicalPlainTextPlugin from "@lexical/react/LexicalPlainTextPlugin";
 import LexicalContentEditable from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+import LexicalAutoFormatterPlugin from "@lexical/react/LexicalAutoFormatterPlugin";
+import LexicalAutoLinkPlugin from "@lexical/react/LexicalAutoLinkPlugin";
+import LexicalTablePlugin from "@lexical/react/LexicalTablePlugin";
 import LexicalOnChangePlugin from "@lexical/react/LexicalOnChangePlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
@@ -21,8 +24,8 @@ function onChange(editorState: EditorState) {
     const root = $getRoot();
     const selection = $getSelection();
 
-    console.log(root, selection);
   });
+  console.log(editorState.toJSON())
 }
 
 // Lexical React plugins are React components, which makes them
@@ -60,6 +63,7 @@ export function Editor() {
         placeholder={<div>Enter some text...</div>}
       />
       <LexicalOnChangePlugin onChange={onChange} />
+      <LexicalAutoFormatterPlugin />
       <HistoryPlugin />
       <MyCustomAutoFocusPlugin />
     </LexicalComposer>
