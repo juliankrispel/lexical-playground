@@ -7,6 +7,8 @@ To test the app - simply clone or download this repository, then open your termi
 
 Now the playground is running at localhost:1234
 
-## Prequisities:
+## Prequisities
 
 - node
+- yarn
+- a browser
