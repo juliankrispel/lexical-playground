@@ -14,35 +14,43 @@ import LexicalTablePlugin from "@lexical/react/LexicalTablePlugin";
 import LexicalOnChangePlugin from "@lexical/react/LexicalOnChangePlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
+import { HeadingNode } from "lexical/HeadingNode";
 
 const theme = {
   // Theme styling goes here
 };
 
-// Lexical React plugins are React components, which makes them
-// highly composable. Furthermore, you can lazy load plugins if
-// desired, so you don't pay the cost for plugins until you
-// actually use them.
+
+
 function MyCustomAutoFocusPlugin() {
   const [editor] = useLexicalComposerContext();
 
-  useLayoutEffect(() => {
-    editor.addListener(
-      "command",
-      (a: any, b: any) => {
-        console.log("what", a, b);
-        return false;
-      },
-      1
-    );
-  });
+  // useLayoutEffect(() => {
+  //   return editor.addListener('decorator', nextDecorators => {
+  //     reactDom.flushSync(() => {
+  //       setDecorators(nextDecorators);
+  //     });
+  //   });
+  // }, [editor]); // Return decorators defined as React Portals
+
+  // useLayoutEffect(() => {
+  //   editor.addListener(
+  //     "command",
+  //     (a: any, b: any) => {
+  //       console.log("what", a, b);
+  //       return false;
+  //     },
+  //     1
+  //   );
+  // });
 
   useEffect(() => {
     // Focus the editor when the effect fires!
     editor.focus();
   }, [editor]);
 
-  return null;
+
+  return <LexicalTreeView editor={editor} />
 }
 
 // Catch any errors that occur during Lexical updates and log them
@@ -59,6 +67,17 @@ function ToolbarPlugin() {
     <div>
       <button
         onClick={() => {
+          editor.execCommand("insertParagraph", {
+            columns: 2,
+            rows: 3,
+          });
+        }}
+      >
+        Insert paragraph
+      </button>
+
+      <button
+        onClick={() => {
           editor.execCommand("insertTable", {
             columns: 2,
             rows: 3,
@@ -71,6 +90,27 @@ function ToolbarPlugin() {
   );
 }
 
+
+class HeaderNode extends ElementNode {
+  static getType() {
+    return "header";
+  }
+
+  static clone(node: ElementNode) {
+    return new HeaderNode(node.__key);
+  }
+
+  constructor(key: string) {
+    super(key);
+  } // View
+
+  createDOM(config: any) {
+    const element = document.createElement("h1");
+    // $setListItemThemeClassNames(element, config.theme, this);
+    return element;
+  }
+}
+
 export function Editor() {
   
   const [editorState, setEditorState] = useState<EditorState>();
@@ -80,7 +120,7 @@ export function Editor() {
   >["initialConfig"] = {
     theme,
     onError,
-    nodes: [TableNode, TableCellNode, TableRowNode],
+    nodes: [TableNode, TableCellNode, TableRowNode, HeadingNode],
   };
 
   // console.log(editorState?.toJSON());
@@ -88,20 +128,11 @@ export function Editor() {
   return (
     <div>
       <LexicalComposer initialConfig={initialConfig}>
-        <ToolbarPlugin />
-
-        <LexicalPlainTextPlugin
-          contentEditable={<LexicalContentEditable/>}
-          initialEditorState={editorState}
-          placeholder={<div>Enter some text...</div>}
-        />
-
         <LexicalOnChangePlugin onChange={(_update, editor) => {
           _update.read(() => {
             // Read the contents of the EditorState here.
             const root = $getRoot();
             const selection = $getSelection();
-            console.log(_update.toJSON())
             setEditorState(_update)
           });
         }} />
@@ -114,7 +145,7 @@ export function Editor() {
         <LexicalTablePlugin />
         <HistoryPlugin />
         <MyCustomAutoFocusPlugin />
-        <LexicalTreeView />
+        <ToolbarPlugin />
       </LexicalComposer>
     </div>
   );
