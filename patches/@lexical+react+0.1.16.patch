@@ -1,0 +1,41 @@
+diff --git a/node_modules/@lexical/react/LexicalComposer.d.ts b/node_modules/@lexical/react/LexicalComposer.d.ts
+index 123777e..0b2747c 100644
+--- a/node_modules/@lexical/react/LexicalComposer.d.ts
++++ b/node_modules/@lexical/react/LexicalComposer.d.ts
+@@ -19,4 +19,4 @@ type Props = {
+   };
+   children: React.ReactNode;
+ };
+-export default function LexicalComposer(arg0: Props): React.ReactNode;
++export default function LexicalComposer(arg0: Props): JSX.Element
+diff --git a/node_modules/@lexical/react/LexicalContentEditable.d.ts b/node_modules/@lexical/react/LexicalContentEditable.d.ts
+index c44d430..d86a2aa 100644
+--- a/node_modules/@lexical/react/LexicalContentEditable.d.ts
++++ b/node_modules/@lexical/react/LexicalContentEditable.d.ts
+@@ -29,4 +29,4 @@ export type Props = $ReadOnly<{
+   tabIndex?: number;
+   testid?: string;
+ }>;
+-export default function LexicalContentEditable(props: Props): React.ReactNode;
++export default function LexicalContentEditable(props: Props): JSX.Element
+diff --git a/node_modules/@lexical/react/LexicalHistoryPlugin.d.ts b/node_modules/@lexical/react/LexicalHistoryPlugin.d.ts
+index 7718e99..c09303c 100644
+--- a/node_modules/@lexical/react/LexicalHistoryPlugin.d.ts
++++ b/node_modules/@lexical/react/LexicalHistoryPlugin.d.ts
+@@ -25,5 +25,5 @@ export type HistoryState = {
+ };
+ export function HistoryPlugin(arg0: {
+   externalHistoryState?: HistoryState;
+-}): React.ReactNode;
++}): JSX.Element
+ export function createEmptyHistoryState(): HistoryState;
+diff --git a/node_modules/@lexical/react/LexicalPlainTextPlugin.d.ts b/node_modules/@lexical/react/LexicalPlainTextPlugin.d.ts
+index 45e373c..9744073 100644
+--- a/node_modules/@lexical/react/LexicalPlainTextPlugin.d.ts
++++ b/node_modules/@lexical/react/LexicalPlainTextPlugin.d.ts
+@@ -12,4 +12,4 @@ export default function PlainTextPlugin(arg0: {
+   contentEditable: React.ReactNode;
+   initialEditorState?: InitialEditorStateType;
+   placeholder: React.ReactNode;
+-}): React.ReactNode;
++}): JSX.Element
