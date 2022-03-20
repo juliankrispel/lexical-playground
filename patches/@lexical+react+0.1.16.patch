@@ -39,3 +39,13 @@ index 7718e99..c09303c 100644
 -}): React.ReactNode;
 +}): JSX.Element
  export function createEmptyHistoryState(): HistoryState;
+diff --git a/node_modules/@lexical/react/LexicalTreeView.d.ts b/node_modules/@lexical/react/LexicalTreeView.d.ts
+index c71d07d..07741f2 100644
+--- a/node_modules/@lexical/react/LexicalTreeView.d.ts
++++ b/node_modules/@lexical/react/LexicalTreeView.d.ts
+@@ -14,4 +14,4 @@ export default function TreeView(props: {
+   timeTravelButtonClassName: string;
+   viewClassName: string;
+   editor: LexicalEditor;
+-}): React.ReactNode;
++}): JSX.Element
