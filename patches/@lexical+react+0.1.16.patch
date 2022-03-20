@@ -1,3 +1,13 @@
+diff --git a/node_modules/@lexical/react/LexicalAutoFormatterPlugin.d.ts b/node_modules/@lexical/react/LexicalAutoFormatterPlugin.d.ts
+index 5cd0793..921bf13 100644
+--- a/node_modules/@lexical/react/LexicalAutoFormatterPlugin.d.ts
++++ b/node_modules/@lexical/react/LexicalAutoFormatterPlugin.d.ts
+@@ -6,4 +6,4 @@
+  *
+  */
+ 
+-export default function LexicalAutoFormatterPlugin(): React.ReactNode;
++export default function LexicalAutoFormatterPlugin(): JSX.Element
 diff --git a/node_modules/@lexical/react/LexicalComposer.d.ts b/node_modules/@lexical/react/LexicalComposer.d.ts
 index 123777e..0b2747c 100644
 --- a/node_modules/@lexical/react/LexicalComposer.d.ts
@@ -8,3 +18,24 @@ index 123777e..0b2747c 100644
  };
 -export default function LexicalComposer(arg0: Props): React.ReactNode;
 +export default function LexicalComposer(arg0: Props): JSX.Element
+diff --git a/node_modules/@lexical/react/LexicalContentEditable.d.ts b/node_modules/@lexical/react/LexicalContentEditable.d.ts
+index c44d430..d86a2aa 100644
+--- a/node_modules/@lexical/react/LexicalContentEditable.d.ts
++++ b/node_modules/@lexical/react/LexicalContentEditable.d.ts
+@@ -29,4 +29,4 @@ export type Props = $ReadOnly<{
+   tabIndex?: number;
+   testid?: string;
+ }>;
+-export default function LexicalContentEditable(props: Props): React.ReactNode;
++export default function LexicalContentEditable(props: Props): JSX.Element
+diff --git a/node_modules/@lexical/react/LexicalHistoryPlugin.d.ts b/node_modules/@lexical/react/LexicalHistoryPlugin.d.ts
+index 7718e99..c09303c 100644
+--- a/node_modules/@lexical/react/LexicalHistoryPlugin.d.ts
++++ b/node_modules/@lexical/react/LexicalHistoryPlugin.d.ts
+@@ -25,5 +25,5 @@ export type HistoryState = {
+ };
+ export function HistoryPlugin(arg0: {
+   externalHistoryState?: HistoryState;
+-}): React.ReactNode;
++}): JSX.Element
+ export function createEmptyHistoryState(): HistoryState;
