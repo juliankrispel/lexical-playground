@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
 	font-family: sans-serif;
 	padding: 3em;
@@ -11,3 +15,4 @@ body {
   outline: none;
   margin-bottom: 2em;
 }
+
